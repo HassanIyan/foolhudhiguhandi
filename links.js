@@ -1,0 +1,20 @@
+module.exports = [
+    'https://www.aslu.com.mv/zEZ',
+    'https://www.aslu.com.mv/G2L',
+    'https://www.aslu.com.mv/xB3',
+    'https://www.aslu.com.mv/E2Y',
+    'https://www.aslu.com.mv/wA1',
+    'https://www.aslu.com.mv/A23',
+    'https://www.aslu.com.mv/yDE',
+    'https://www.aslu.com.mv/rv4',
+    'https://www.aslu.com.mv/qr0',
+    'https://www.aslu.com.mv/pqp',
+    'https://www.aslu.com.mv/o0B',
+    'https://www.aslu.com.mv/noW',
+    'https://www.aslu.com.mv/mn9',
+    'https://www.aslu.com.mv/9yD',
+    'https://www.aslu.com.mv/lmg',
+    'https://www.aslu.com.mv/klN',
+    'https://www.aslu.com.mv/jkP',
+    'https://www.aslu.com.mv/gGG'
+]
