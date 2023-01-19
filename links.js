@@ -1,4 +1,4 @@
-module.exports = [
+export default [
     'https://www.aslu.com.mv/zEZ',
     'https://www.aslu.com.mv/G2L',
     'https://www.aslu.com.mv/xB3',
