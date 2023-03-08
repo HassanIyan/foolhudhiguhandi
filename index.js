@@ -6,7 +6,7 @@ import cluster from 'cluster';
 
 (async() => {
     let tries = 0
-    for (let index = 0; index < 30; index++) {
+    for (let index = 0; index < 50; index++) {
         if (!cluster.isWorker) {
             console.log("Process Started")
             cluster.fork()
@@ -50,7 +50,7 @@ import cluster from 'cluster';
                     for (var i = 0;i<randReqUrls.length;i++) {
                         console.log("-------------------------\n" + parseInt(i+1) + ") " + "Fetching " + randReqUrls[i] + "\n-------------------------");
                         await page.goto(randReqUrls[i], { waitUntil: 'networkidle2' });
-                        await page.waitForTimeout(1000);
+                        await page.waitForTimeout(5000);
                     }
             
                 } catch (err) {
