@@ -6,7 +6,7 @@ import cluster from 'cluster';
 
 (async() => {
     let tries = 0
-    for (let index = 0; index < 30; index++) {
+    for (let index = 0; index < 60; index++) {
         if (!cluster.isWorker) {
             console.log("Process Started")
             cluster.fork()
