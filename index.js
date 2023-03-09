@@ -48,9 +48,8 @@ import cluster from 'cluster';
                 try {
                     var randReqUrls = shuffle(reqUrls);
                     for (var i = 0;i<randReqUrls.length;i++) {
-                        // console.log("-------------------------\n" + parseInt(i+1) + ") " + "Fetching " + randReqUrls[i] + "\n-------------------------" + "\n-------------------------");
                         console.log("----------------------------------------------------------------------------------------")
-                        console.log(`(${parseInt(index+1)}) ${randReqUrls[i]} = ${tries} try`)
+                        console.log(`(${parseInt(index+1)}) ${randReqUrls[i]}`)
                         console.log("----------------------------------------------------------------------------------------")
                         await page.goto(randReqUrls[i], { waitUntil: 'networkidle2' });
                         await page.waitForTimeout(5000);

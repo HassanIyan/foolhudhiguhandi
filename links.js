@@ -1,5 +1,5 @@
 export default 
 [ 
-    'https://gaafu.mv/102932',
-    'https://gaafu.mv/102984'
+    'https://www.aslu.com.mv/G6R8',
+    'https://www.aslu.com.mv/PN7W'
 ] 
