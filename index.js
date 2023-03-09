@@ -8,7 +8,6 @@ import cluster from 'cluster';
     let tries = 0
     for (let index = 0; index < 50; index++) {
         if (!cluster.isWorker) {
-            console.log("Process Started")
             cluster.fork()
         } else {
             while (true) {
@@ -48,11 +47,10 @@ import cluster from 'cluster';
                 try {
                     var randReqUrls = shuffle(reqUrls);
                     for (var i = 0;i<randReqUrls.length;i++) {
-                        console.log("----------------------------------------------------------------------------------------")
-                        console.log(`(${parseInt(index+1)}) ${randReqUrls[i]}`)
-                        console.log("----------------------------------------------------------------------------------------")
+                        const now = new Date().toLocaleTimeString()
+                        console.log(`[${now}] ${randReqUrls[i]}`)
                         await page.goto(randReqUrls[i], { waitUntil: 'networkidle2' });
-                        await page.waitForTimeout(5000);
+                        await page.waitForTimeout(30000);
                     }
             
                 } catch (err) {
