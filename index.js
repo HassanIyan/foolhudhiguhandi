@@ -50,7 +50,7 @@ import cluster from 'cluster';
                         const now = new Date().toLocaleTimeString()
                         console.log(`[${now}] ${randReqUrls[i]}`)
                         await page.goto(randReqUrls[i], { waitUntil: 'networkidle2' });
-                        await page.waitForTimeout(30000);
+                        await page.waitForTimeout(20000);
                     }
             
                 } catch (err) {
