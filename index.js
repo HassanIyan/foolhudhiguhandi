@@ -1,12 +1,15 @@
 'use strict';
 
 import puppeteer from 'puppeteer';
-import reqUrls from './links.js';
 import cluster from 'cluster';
+import { createRequire } from "module";
+
+const require = createRequire(import.meta.url);
+const { sessions, links } = require('./config.json');
 
 (async() => {
     let tries = 0
-    for (let index = 0; index < 50; index++) {
+    for (let index = 0; index < sessions; index++) {
         if (!cluster.isWorker) {
             cluster.fork()
         } else {
@@ -45,7 +48,7 @@ import cluster from 'cluster';
                 });
             
                 try {
-                    var randReqUrls = shuffle(reqUrls);
+                    var randReqUrls = shuffle(links);
                     for (var i = 0;i<randReqUrls.length;i++) {
                         const now = new Date().toLocaleTimeString()
                         console.log(`[${now}] ${randReqUrls[i]}`)
