@@ -5,7 +5,7 @@ import cluster from 'cluster';
 import { createRequire } from "module";
 
 const require = createRequire(import.meta.url);
-const { sessions, links } = require('./config.json');
+const { sessions, links, seconds } = require('./config.json');
 
 (async() => {
     let tries = 0
@@ -53,7 +53,7 @@ const { sessions, links } = require('./config.json');
                         const now = new Date().toLocaleTimeString()
                         console.log(`[${now}] ${randReqUrls[i]}`)
                         await page.goto(randReqUrls[i], { waitUntil: 'networkidle2' });
-                        await page.waitForTimeout(15000);
+                        await page.waitForTimeout(seconds * 1000);
                     }
             
                 } catch (err) {
