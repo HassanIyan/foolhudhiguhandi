@@ -5,7 +5,7 @@ import cluster from 'cluster';
 import { createRequire } from "module";
 
 const require = createRequire(import.meta.url);
-const { sessions, links, seconds } = require('./config.json');
+const { sessions, links, seconds, proxy } = require('./config.json');
 
 (async() => {
     let tries = 0
@@ -16,7 +16,11 @@ const { sessions, links, seconds } = require('./config.json');
             while (true) {
                 tries++
                 const browser = await puppeteer.launch({ headless: true });
-                const context = await browser.createIncognitoBrowserContext();
+                const context = await browser.createIncognitoBrowserContext(proxy ? {
+                    proxyServer: proxy
+                } : {
+                    
+                });
                 const page = await context.newPage();
                 await page.setRequestInterception(true);
         
@@ -51,9 +55,9 @@ const { sessions, links, seconds } = require('./config.json');
                     var randReqUrls = shuffle(links);
                     for (var i = 0;i<randReqUrls.length;i++) {
                         const now = new Date().toLocaleTimeString()
-                        console.log(`[${now}] ${randReqUrls[i]}`)
                         await page.goto(randReqUrls[i], { waitUntil: 'networkidle2' });
                         await page.waitForTimeout(seconds * 1000);
+                        console.log(`[${now}] ${randReqUrls[i]}`)
                     }
             
                 } catch (err) {
