@@ -17,9 +17,9 @@ const { sessions, links, seconds, proxy, userName, password } = require('./confi
                 tries++
                 const browser = await puppeteer.launch({
                     headless: true,
-                    args: (proxy && userName && password) && [
+                    args: (proxy && userName && password) ? [
                         `--proxy-server=${proxy}`
-                    ]
+                    ] : []
                 });
                 const context = await browser.createIncognitoBrowserContext();
                 const page = await context.newPage();
