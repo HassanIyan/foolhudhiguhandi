@@ -5,7 +5,7 @@ import cluster from 'cluster';
 import { createRequire } from "module";
 
 const require = createRequire(import.meta.url);
-const { sessions, links, seconds, proxy } = require('./config.json');
+const { sessions, links, seconds, proxy, userName, password } = require('./config.json');
 
 (async() => {
     let tries = 0
@@ -15,13 +15,21 @@ const { sessions, links, seconds, proxy } = require('./config.json');
         } else {
             while (true) {
                 tries++
-                const browser = await puppeteer.launch({ headless: true });
-                const context = await browser.createIncognitoBrowserContext(proxy ? {
-                    proxyServer: proxy
-                } : {
-                    
+                const browser = await puppeteer.launch({
+                    headless: true,
+                    args: (proxy && userName && password) && [
+                        `--proxy-server=${proxy}`
+                    ]
                 });
+                const context = await browser.createIncognitoBrowserContext();
                 const page = await context.newPage();
+                page.setDefaultNavigationTimeout(0);
+                if(proxy && userName && password) {
+                    await page.authenticate({        
+                        username: userName,
+                        password: password
+                    });
+                }
                 await page.setRequestInterception(true);
         
                 await page.setUserAgent('Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Mobile Safari/537.36');

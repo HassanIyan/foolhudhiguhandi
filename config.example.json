@@ -6,5 +6,7 @@
         "https://www.aslu.com.mv/Z60J",
         "https://www.aslu.com.mv/68Bn"
     ],
-    "proxy": null
+    "proxy": null,
+    "userName": null,
+    "password": null
 }
