@@ -37,7 +37,6 @@ const { sessions, links, seconds, proxy, userName, password } = require('./confi
                 page.on('request', request => {
                     const url = request.url();
                     
-                    console.log(request.resourceType())
                     // Filter out image and font requests
                     if (request.resourceType() === 'image' || request.resourceType() === 'font' || request.resourceType() === 'stylesheet') {
                         request.abort();
